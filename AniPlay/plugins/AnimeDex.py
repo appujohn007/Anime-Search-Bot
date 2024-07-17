@@ -10,7 +10,8 @@ class AnimeDex:
 
     def search(query):
         url = 'https://animedex.pp.ua/search?query=' + str(urllib.parse.quote(query))
-        soup = bs(requests.get(url).content, 'html.parser')
+        response = requests.get(url)
+        soup = bs(response.content, 'html.parser')
         print(f" soup = {soup}")
         animes = []
 
@@ -19,12 +20,12 @@ class AnimeDex:
             url = 'https://animedex.live' + anime.get('href')
             animes.append((title, url))
         
-        # Save the results to a text file
-        with open('fetched_animes.txt', 'w', encoding='utf-8') as f:
-            for title, url in animes:
-                f.write(f"{title}: {url}\n")
+        # Save the raw HTML response to a text file
+        with open('fetched_response.html', 'w', encoding='utf-8') as f:
+            f.write(response.text)
         
         return animes
+
 
     
     def anime(url):
