@@ -9,7 +9,7 @@ class AnimeDex:
         pass
 
     def search(query):
-        url = 'https://animedex.live/search?query=' + \
+        url = 'https://animedex.pp.ua/search?query=' + \
             str(urllib.parse.quote(query))
         soup = bs(requests.get(url).content, 'html.parser')
         animes = []
@@ -40,7 +40,7 @@ class AnimeDex:
         ep = []
         eps = soup.find_all('a', 'ep-btn')
         for i in eps:
-            ep.append((i.text, 'https://animedex.live' + i.get('href')))
+            ep.append((i.text, 'https://animedex.pp.ua' + i.get('href')))
 
         return img, text, ep
 
@@ -51,7 +51,7 @@ class AnimeDex:
         sub = soup.find('div', 'server').find_all('div', 'sitem')
         surl = []
         for i in sub:
-            url = 'https://animedex.live' + \
+            url = 'https://animedex.pp.ua' + \
                 i.find('a').get('data-value').split(' ')[0]
             surl.append((i.text.strip(), url))
 
@@ -59,7 +59,7 @@ class AnimeDex:
         durl = []
         if dub:
             for i in dub.find_all('div', 'sitem'):
-                url = 'https://animedex.live' + \
+                url = 'https://animedex.pp.ua' + \
                     i.find('a').get('data-value').split(' ')[0]
                 durl.append((i.text.strip(), url))
 
