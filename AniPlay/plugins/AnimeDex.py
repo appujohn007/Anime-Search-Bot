@@ -12,7 +12,7 @@ class AnimeDex:
         url = 'https://animedex.pp.ua/search?query=' + str(urllib.parse.quote(query))
         response = requests.get(url)
         soup = bs(response.content, 'html.parser')
-        print(f" soup = {soup}")
+      #  print(f" soup = {soup}")
         animes = []
 
         for anime in soup.find('div', 'divox').find_all('a'):
@@ -23,6 +23,7 @@ class AnimeDex:
         # Save the raw HTML response to a text file
         with open('fetched_response.html', 'w', encoding='utf-8') as f:
             f.write(response.text)
+            print(saved)
         
         return animes
 
