@@ -8,7 +8,7 @@ class AnimeDex:
     def __init__(self) -> None:
         pass
 
-    def search(self, query):
+    def search(query):
         url = 'https://animedex.pp.ua/search?query=' + str(urllib.parse.quote(query))
         soup = bs(requests.get(url).content, 'html.parser')
         print(f" soup = {soup}")
