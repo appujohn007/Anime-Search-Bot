@@ -15,15 +15,15 @@ class AnimeDex:
       #  print(f" soup = {soup}")
         animes = []
 
+        with open('fetched_response.html', 'w', encoding='utf-8') as f:
+            f.write(response.text)
+            print("saved") 
+
         for anime in soup.find('div', 'divox').find_all('a'):
             title = anime.find('h3').text
             url = 'https://animedex.live' + anime.get('href')
             animes.append((title, url))
         
-        # Save the raw HTML response to a text file
-        with open('fetched_response.html', 'w', encoding='utf-8') as f:
-            f.write(response.text)
-            print(saved)
         
         return animes
 
