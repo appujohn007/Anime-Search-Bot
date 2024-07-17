@@ -15,7 +15,7 @@ class AnimeDex:
       #  print(f" soup = {soup}")
         animes = []
 
-        with open('fetched_response.html', 'w', encoding='utf-8') as f:
+        with open('fetched_response.txt', 'w', encoding='utf-8') as f:
             f.write(response.text)
             print("saved") 
 
