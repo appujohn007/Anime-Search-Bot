@@ -28,6 +28,7 @@ async def searchCMD(_, message: Message):
         button = BTN.searchCMD(user, data, query)
         await message.reply_text(QUERY.format(query), reply_markup=button)
     except Exception as e:
+        print(f" error = {e}")
         try:
             return await message.reply_text('**Anime Not Found...**\n\nProbably Incorrect Name, Try again')
         except:
